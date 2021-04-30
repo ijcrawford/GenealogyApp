@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">GenealogyApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_home">Home</string>
+    <string name="appTitle">Genealogy Item Finder App</string>
+    <string name="action_settings">Settings</string>
+    <string-array name="list_items">
+        <item>Filler Text 1</item>
+        <item>Filler Item 2</item>
+        <item>Filler Item 3</item>
+        <item>Filler Text 4</item>
+        <item>Filler Item 5</item>
+        <item>Filler Item 6</item>
+        <item>Filler Text 7</item>
+        <item>Filler Item 8</item>
+        <item>Filler Item 9</item>
+    </string-array>
+</resources>
