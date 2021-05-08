@@ -3,12 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_launcher_background"
-            android:title="@string/menu_home" />
-    </group>
 
     <item android:title="Categories">
         <menu>
@@ -17,9 +11,13 @@
                 android:icon="@drawable/ic_launcher_background"
                 android:title="Sword" />
             <item
-                android:id="@+id/nav_more"
+                android:id="@+id/nav_lance"
                 android:icon="@drawable/ic_launcher_background"
-                android:title="More" />
+                android:title="Lance" />
+            <item
+                android:id="@+id/nav_bow"
+                android:icon="@drawable/ic_launcher_background"
+                android:title="Bow" />
 
         </menu>
     </item>

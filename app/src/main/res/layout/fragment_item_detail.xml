@@ -9,27 +9,33 @@
 
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/item_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         tools:src="@tools:sample/avatars[0]" />
 
     <TextView
-        android:id="@+id/nameText"
+        android:id="@+id/name_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Item name" />
 
     <TextView
-        android:id="@+id/statsText"
+        android:id="@+id/stats_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Item stats" />
 
     <TextView
-        android:id="@+id/helpText"
+        android:id="@+id/effect_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Item effect" />
+
+    <TextView
+        android:id="@+id/location_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Where to find the item if necessary" />

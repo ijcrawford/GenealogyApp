@@ -1,64 +1,70 @@
 package edu.quinnipiac.ser210.genealogyapp;
 
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ItemDetailFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ItemDetailFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private SQLiteOpenHelper dbHelper;
+    private SQLiteDatabase db;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ItemDetailFragment() {
+       public ItemDetailFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ItemDetailFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ItemDetailFragment newInstance(String param1, String param2) {
-        ItemDetailFragment fragment = new ItemDetailFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+            }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_item_detail, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        dbHelper = new GenealogyDatabaseHelper(view.getContext());
+        db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query("ITEMS",new String[] {"IMAGE_RESOURCE_ID", "NAME", "STATS", "EFFECT", "LOCATION"},"NAME = ?", new String[] {getArguments().getString("name")},null,null,null);
+        if(cursor.moveToFirst()) {
+            int photoId = cursor.getInt(0);
+            String nameText = cursor.getString(1);
+            String statsText = cursor.getString(2);
+            String effectText = cursor.getString(3);
+            String locationText = cursor.getString(4);
+
+            ImageView image = (ImageView) view.findViewById(R.id.item_image);
+            image.setImageResource(photoId);
+            image.setContentDescription(nameText);
+            TextView name = (TextView) view.findViewById(R.id.name_text);
+            name.setText(nameText);
+            TextView stats = (TextView) view.findViewById(R.id.stats_text);
+            stats.setText(statsText);
+            TextView effect = (TextView) view.findViewById(R.id.name_text);
+            effect.setText(effectText);
+            TextView location = (TextView) view.findViewById(R.id.stats_text);
+            location.setText(locationText);
+        }
+        cursor.close();
+        db.close();
     }
 }

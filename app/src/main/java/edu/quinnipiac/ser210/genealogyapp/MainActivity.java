@@ -15,6 +15,8 @@ import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     DrawerLayout drawerLayout;
@@ -28,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         drawerLayout = findViewById(R.id.drawer_layout);
@@ -46,17 +49,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+        Bundle bundle = new Bundle();
+        if (id == R.id.nav_sword) {
+            bundle.putString("category", "sword");
+            navController.navigate(R.id.action_homeFragment_to_itemListFragment, bundle);
+        } else if (id == R.id.nav_lance) {
+            bundle.putString("category", "lance");
+            navController.navigate(R.id.action_homeFragment_to_itemListFragment, bundle);
+        }
+        else if (id == R.id.nav_bow) {
+            bundle.putString("category", "bow");
+            navController.navigate(R.id.action_homeFragment_to_itemListFragment, bundle);
+        }
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    @Override
     public boolean onSupportNavigateUp() {
-        return super.onSupportNavigateUp();
+        return NavigationUI.navigateUp(navController,drawerLayout);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main,menu);
         return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        return false;
     }
 }

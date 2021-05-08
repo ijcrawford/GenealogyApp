@@ -12,7 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class HomeFragment extends Fragment implements View.OnClickListener {
+public class HomeFragment extends Fragment {
 
     NavController navController = null;
 
@@ -37,22 +37,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        navController = Navigation.findNavController(view);
-        view.findViewById(R.id.nav_sword).setOnClickListener(this);
-        view.findViewById(R.id.nav_more).setOnClickListener(this);
     }
 
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.nav_sword:
-                //differentiate (bundle?)
-                navController.navigate(R.id.action_homeFragment_to_itemListFragment);
-                break;
-            case R.id.nav_more:
-                navController.navigate(R.id.action_homeFragment_to_itemListFragment);
-                break;
-        }
-    }
 }

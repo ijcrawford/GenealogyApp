@@ -5,15 +5,28 @@
     <string name="menu_home">Home</string>
     <string name="appTitle">Genealogy Item Finder App</string>
     <string name="action_settings">Settings</string>
+    <string name="json_database">{\"categories\":[\"sword\":
+        [{\"imageId\":\"sword_iron\",\"name\":\"IronSword\",\"stats\":\"Might:6,Weight:3,Hit:80,Rank:C\",\"effect\":\"none\",\"location\":\"-\"},
+        {\"imageId\":\"sword_steel\",\"name\":\"SteelSword\",\"stats\":\"Might:10,Weight:3,Hit:80,Rank:B\",\"effect\":\"none\",\"location\":\"-\"},
+        {\"imageId\":\"sword_silver\",\"name\":\"SilverSword\",\"stats\":\"Might:14,Weight:3,Hit:80,Rank:A\",\"effect\":\"none\",\"location\":\"GetfromArvisbytalkingwithSigurdinPrologue\"},
+        {\"imageId\":\"sword_defender\",\"name\":\"DefenderSword\",\"stats\":\"Might:12,Weight:5,Hit:90,Rank:C\",\"effect\":\"+7Defense\",\"location\":\"Getfromsecond-mostnorthernvillageinChapter4byvisitingwithSylvia\"},
+        {\"imageId\":\"sword_tyrfing\",\"name\":\"Tyrfing\",\"stats\":\"Might:30,Weight:7,Hit:80,Rank:S\",\"effect\":\"+10Skill,+10Speed,+20Resistance,GrantsMiracleskill\",\"location\":\"GetfromByronbytalkingwithSigurdinChapter5\"}],
+        \"lance\":[{\"imageId\":\"lance_iron\",\"name\":\"IronLance\",\"stats\":\"Might:12,Weight:12,Hit:80,Rank:C\",\"effect\":\"none\",\"location\":\"-\"},
+        {\"imageId\":\"lance_steel\",\"name\":\"SteelLance\",\"stats\":\"Might:16,Weight:12,Hit:80,Rank:B\",\"effect\":\"none\",\"location\":\"-\"},
+        {\"imageId\":\"lance_silver\",\"name\":\"SilverLance\",\"stats\":\"Might:20,Weight:12,Hit:80,Rank:A\",\"effect\":\"none\",\"location\":\"-\"},
+        {\"imageId\":\"lance_brave\",\"name\":\"BraveLance\",\"stats\":\"Might:15,Weight:5,Hit:90,Rank:B\",\"effect\":\"Grants2consecutivestrikesperattack\",\"location\":\"GetfromQuanbytalkingwithFinninChapter2\"},
+        {\"imageId\":\"lance_gae_bolg\",\"name\":\"GaeBolg\",\"stats\":\"Might:30,Weight:12,Hit:70,Rank:S\",\"effect\":\"+10Strength,+10Skill,+10Defense\",\"location\":\"GetfromEthlynbytalkingwithQuaninChapter3\"}],
+        \"bow\":[{\"imageId\":\"bow_iron\",\"name\":\"IronBow\",\"stats\":\"Might:10,Weight:8,Hit:70,Rank:C\",\"effect\":\"none\",\"location\":\"-\"},
+        {\"imageId\":\"bow_steel\",\"name\":\"SteelBow\",\"stats\":\"Might:14,Weight:8,Hit:70,Rank:B\",\"effect\":\"none\",\"location\":\"-\"},
+        {\"imageId\":\"bow_silver\",\"name\":\"SilverBow\",\"stats\":\"Might:18,Weight:8,Hit:70,Rank:A\",\"effect\":\"none\",\"location\":\"-\"},
+        {\"imageId\":\"bow_killer\",\"name\":\"KillerBow\",\"stats\":\"Might:14,Weight:3,Hit:100,Rank:C\",\"effect\":\"GrantsCriticalskill\",\"location\":\"ComeswithJamkeuponrecruitment\"},
+        {\"imageId\":\"bow_yewfelle\",\"name\":\"Yewfelle\",\"stats\":\"Might:30,Weight:13,Hit:70,Rank:S\",\"effect\":\"+10Strength,+10Speed,GrantsRenewalskill\",\"location\":\"GetfromEdainbytalkingwithhertoBrigidinChapter3\"}
+        ]]}</string>
     <string-array name="list_items">
         <item>Filler Text 1</item>
         <item>Filler Item 2</item>
         <item>Filler Item 3</item>
         <item>Filler Text 4</item>
         <item>Filler Item 5</item>
-        <item>Filler Item 6</item>
-        <item>Filler Text 7</item>
-        <item>Filler Item 8</item>
-        <item>Filler Item 9</item>
     </string-array>
 </resources>

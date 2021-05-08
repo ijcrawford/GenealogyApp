@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".HomeFragment">
+    <!--android:background="@drawable/verdane_background"-->
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -21,6 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="Better Homescreen coming soon" />
+        android:text="Better Homescreen coming never I guess"/>
 
 </LinearLayout>

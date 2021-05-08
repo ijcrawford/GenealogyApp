@@ -1,5 +1,9 @@
 package edu.quinnipiac.ser210.genealogyapp;
 
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,16 +12,27 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.ListFragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 
-public class ItemListFragment extends ListFragment implements View.OnClickListener{
+public class ItemListFragment extends Fragment {
 
     NavController navController = null;
+    RecyclerView itemList;
+    ListAdapter adapter;
+    ArrayList<String> items;
+    GenealogyDatabaseHelper dbHelper;
+    Cursor cursor;
+    SQLiteDatabase db;
 
     public ItemListFragment() {
         // Required empty public constructor
@@ -38,20 +53,44 @@ public class ItemListFragment extends ListFragment implements View.OnClickListen
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        view.findViewById(R.id.item_list).setOnClickListener(this);
-        navController = Navigation.findNavController(view);
-    }
-
-    /*@Override
-    public void onListItemClick(@NonNull ListView l, @NonNull View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
-        //TODO: Add bundle(?) stuff based on which item is clicked
-        navController.navigate(R.id.action_itemListFragment_to_itemDetailFragment);
-
-    }*/
-
-    @Override
-    public void onClick(View view) {
-        navController.navigate(R.id.action_itemListFragment_to_itemDetailFragment);
+        dbHelper = new GenealogyDatabaseHelper(view.getContext());
+        db = dbHelper.getReadableDatabase();
+        itemList = view.findViewById(R.id.item_list);
+        itemList.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        switch(getArguments().getString("category")) {
+            case "sword": {
+                cursor = db.query("ITEMS", new String[] {"NAME"}, "CATEGORY = ?",new String[] {"sword"}, null, null, null);
+                if (cursor != null && cursor.moveToFirst()) {
+                    items = new ArrayList<String>();
+                    do {
+                        items.add(cursor.getString(0));
+                    } while (cursor.moveToNext());
+                    adapter = new ListAdapter(view.getContext(),items);
+                    itemList.setAdapter(adapter);
+                }
+            }
+            case "lance": {
+                cursor = db.query("ITEMS", new String[] {"NAME"}, "CATEGORY = ?",new String[] {"lance"}, null, null, null);
+                if (cursor != null && cursor.moveToFirst()) {
+                    items = new ArrayList<String>();
+                    do {
+                        items.add(cursor.getString(0));
+                    } while (cursor.moveToNext());
+                    adapter = new ListAdapter(view.getContext(),items);
+                    itemList.setAdapter(adapter);
+                }
+            }
+            case "bow": {
+                cursor = db.query("ITEMS", new String[] {"NAME"}, "CATEGORY = ?",new String[] {"bow"}, null, null, null);
+                if (cursor != null && cursor.moveToFirst()) {
+                    items = new ArrayList<String>();
+                    do {
+                        items.add(cursor.getString(0));
+                    } while (cursor.moveToNext());
+                    adapter = new ListAdapter(view.getContext(),items);
+                    itemList.setAdapter(adapter);
+                }
+            }
+        }
     }
 }
