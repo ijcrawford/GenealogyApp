@@ -53,43 +53,62 @@ public class ItemListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        navController = null;
         dbHelper = new GenealogyDatabaseHelper(view.getContext());
         db = dbHelper.getReadableDatabase();
         itemList = view.findViewById(R.id.item_list);
         itemList.setLayoutManager(new LinearLayoutManager(view.getContext()));
         switch(getArguments().getString("category")) {
             case "sword": {
-                cursor = db.query("ITEMS", new String[] {"NAME"}, "CATEGORY = ?",new String[] {"sword"}, null, null, null);
-                if (cursor != null && cursor.moveToFirst()) {
+                //cursor = db.query("ITEMS", new String[] {"NAME"}, "CATEGORY = ?",new String[] {"sword"}, null, null, null);
+                //if (cursor != null && cursor.moveToFirst()) {
                     items = new ArrayList<String>();
-                    do {
-                        items.add(cursor.getString(0));
-                    } while (cursor.moveToNext());
+                    //do {
+                        //items.add(cursor.getString(0));
+                        items.add("Iron Sword");
+                        items.add("Steel Sword");
+                        items.add("Silver Sword");
+                        items.add("Defender Sword");
+                        items.add("Tyrfing");
+                    //} while (cursor.moveToNext());
                     adapter = new ListAdapter(view.getContext(),items);
                     itemList.setAdapter(adapter);
-                }
+                    break;
+               // }
             }
             case "lance": {
-                cursor = db.query("ITEMS", new String[] {"NAME"}, "CATEGORY = ?",new String[] {"lance"}, null, null, null);
-                if (cursor != null && cursor.moveToFirst()) {
+                //cursor = db.query("ITEMS", new String[] {"NAME"}, "CATEGORY = ?",new String[] {"lance"}, null, null, null);
+                //if (cursor != null && cursor.moveToFirst()) {
                     items = new ArrayList<String>();
-                    do {
-                        items.add(cursor.getString(0));
-                    } while (cursor.moveToNext());
+                items.add("Iron Lance");
+                items.add("Steel Lance");
+                items.add("Silver Lance");
+                items.add("Brave Lance");
+                items.add("Gae Bolg");
+                    //do {
+                       // items.add(cursor.getString(0));
+                    //} while (cursor.moveToNext());
                     adapter = new ListAdapter(view.getContext(),items);
                     itemList.setAdapter(adapter);
-                }
+                    break;
+               // }
             }
             case "bow": {
-                cursor = db.query("ITEMS", new String[] {"NAME"}, "CATEGORY = ?",new String[] {"bow"}, null, null, null);
-                if (cursor != null && cursor.moveToFirst()) {
+               // cursor = db.query("ITEMS", new String[] {"NAME"}, "CATEGORY = ?",new String[] {"bow"}, null, null, null);
+                //if (cursor != null && cursor.moveToFirst()) {
                     items = new ArrayList<String>();
-                    do {
-                        items.add(cursor.getString(0));
-                    } while (cursor.moveToNext());
+                items.add("Iron Bow");
+                items.add("Steel Bow");
+                items.add("Silver Bow");
+                items.add("Killer Bow");
+                items.add("Yewfelle");
+                   // do {
+                        //items.add(cursor.getString(0));
+                    //} while (cursor.moveToNext());
                     adapter = new ListAdapter(view.getContext(),items);
                     itemList.setAdapter(adapter);
-                }
+                    break;
+               // }
             }
         }
     }

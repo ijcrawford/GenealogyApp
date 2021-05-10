@@ -24,25 +24,20 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private List<String> data;
     private NavController navController;
     private String title;
+    //private Context context;
 
     public ListAdapter(Context context, List<String> data) {
         this.layoutInflater = LayoutInflater.from(context);
         this.data = data;
+        //this.context = context;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = layoutInflater.inflate(R.layout.item_card, parent, false);
-        navController = Navigation.findNavController(view);
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString("name", title);
-                navController.navigate(R.id.action_itemListFragment_to_itemDetailFragment, bundle);
-            }
-        });
+        //navController = Navigation.findNavController();
+        //view.setOnClickListener(Navigation.createNavigateOnClickListener(R.id.action_itemListFragment_to_itemDetailFragment));
         return new ViewHolder(view);
     }
 
@@ -51,6 +46,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         title = data.get(position);
         holder.itemText.setText(title);
+        holder.itemView.setOnClickListener( view -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("name", title);
+            Navigation.findNavController(view).navigate(R.id.action_itemListFragment_to_itemDetailFragment, bundle);
+        });
         //holder.itemImage.setImageResource();
 
     }
